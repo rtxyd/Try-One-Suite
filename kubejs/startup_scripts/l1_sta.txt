@@ -1,0 +1,63 @@
+//禁用、修改buff
+// StartupEvents.registry('mob_effect', e => {
+//    /**@type {Special.MobEffect[]} */
+//    let ids = [
+//       'l2complements:curse', //0
+//       // 'l2complements:long_curse', //1
+//       // 'apothic_attributes:grievous', //2
+//       // 'apothic_attributes:strong_grievous', //3
+//    ];
+// 	e.create('l2complements:curse').effectTick((ett, lv) => {
+//       	// if(ett.type != 'minecraft:player') 
+//       	// {
+//       	// 	ett.addEffect('apothic_attributes:grievous');
+//       	// 	return
+//       	// }
+//       	// ett.getEffect('apothic_attributes:grievous')
+//          ett.removeEffect('l2complements:curse')
+//       })
+// 	// e.create('l2complements:long_curse').effectTick((ett, lv) => {
+//    //    	// if(ett.type != 'minecraft:player') 
+//    //    	// {
+//    //    	// 	ett.addEffect('apothic_attributes:strong_grievous');
+//    //    	// 	return
+//    //    	// }
+//    //    	ett.getEffect('apothic_attributes:strong_grievous')
+//    //       ett.removeEffect('l2complements:curse')
+//    //    })
+// })
+//    // ids.forEach(id => {
+//    //    e.create(id)
+//    //    .effectTick((ett, lv) => {
+//    //    	if(ett.type == 'minecraft:player') 
+//    //    	{
+//    //    		e.create('cataclysm:monstrous').modifyAttribute("minecraft:generic.armor", "ModifyArmor", 666, "addition");
+//    //    		return
+//    //    	}
+//    //    	ett.removeEffect(id)
+//    //    })
+//    // 	})
+// //修改effect
+// // e.create('cataclysm:monstrous').modifyAttribute("minecraft:generic.armor", "ModifyArmor", 666, "addition");
+
+// NativeEvents.onEvent('net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerChangedDimensionEvent',event =>{
+//     let player = event.entity;
+//     if(player.isPlayer())
+//     {
+//         player.setHealth(1);
+//     }
+// })
+// NativeEvents.onEvent('net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent',event =>{
+//     let player = event.entity;
+//     if(player.isPlayer())
+//     {
+//         player.setHealth(20);
+//     }
+// })
+// NativeEvents.onEvent('net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent',event =>{
+//     let player = event.entity;
+//     if(player.isPlayer())
+//     {
+//         // player.setHealth(20);
+//     }
+// })

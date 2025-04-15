@@ -1,0 +1,34 @@
+// 客户端逻辑 client.js
+// const Minecraft = Java.loadClass('net.minecraft.client.Minecraft');
+// const Options = Java.loadClass('net.minecraft.client.Options');
+// const Key_Use = Minecraft.getInstance().options.keyUse;
+const MOD_CHANNEL_1 = 'kubejs:charge_energy_sword';
+let isCharging = false;
+NativeEvents.onEvent("net.neoforged.neoforge.client.event.InputEvent$InteractionKeyMappingTriggered", event => {
+    const player = Client.player;
+    const heldItem = player.getMainHandItem();
+
+    if (heldItem.id !== 'eternal_starlight:energy_sword') {
+        player.tell(`物品错误`);
+        isCharging = false;
+        return;
+    }
+    player.tell(`物品正确`);
+    // 检测右键按住（需实际按键绑定）
+    if (event.isUseItem()) {
+        player.tell(`开始蓄力`);
+        if (!isCharging) {
+            isCharging = true;
+            player.sendData(MOD_CHANNEL_1, { 
+                action: 'start_charge'
+            });
+        }
+    } else if (isCharging) {
+        player.tell(`结束蓄力`);
+        isCharging = false;
+        player.sendData(MOD_CHANNEL_1, { 
+            action: 'end_charge'
+        });
+    }
+})
+// ClientEvents.tick(event =>)
