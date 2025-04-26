@@ -1,0 +1,17 @@
+{
+    "javascript.suggestionActions.enabled": true,
+    "javascript.suggest.completeJSDocs": true,
+    "javascript.format.enable": true,
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "javascript.suggest.paths": true,
+    "javascript.suggest.autoImports": true,
+    "jsdoc.generateTemplates": true,
+    "jsdoc.enableTemplates": true,
+    "jsdoc.templatesLocation": "./.vscode/jsdoc-templates",
+    "docthis.includeTypes": true,
+    "docthis.inferTypesFromNames": true,
+    "docthis.includeMemberOfOnClassMembers": true,
+    "docthis.includeDescriptionTag": true,
+    "docthis.authorName": "rtxyd"
+}

@@ -1,6 +1,6 @@
-const TickDuration = Java.loadClass('dev.latvian.mods.kubejs.util.TickDuration');
+// const TickDuration = Java.loadClass('dev.latvian.mods.kubejs.util.TickDuration');
 // const Cast = Java.loadClass('dev.latvian.mods.kubejs.util.Cast');
-const delayTicks = TickDuration.wrap(100);
+const delayTicks = needClass.TickDuration.wrap(100);
 ServerEvents.loaded(function (event) {
     console.log("服务端已启动！");
     // let server = event.server;
