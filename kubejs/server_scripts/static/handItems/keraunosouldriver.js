@@ -3,7 +3,7 @@ function KeraunoSoulDriver() {
         const server = initialEntity.getServer()
         if (!server) return
         let effectTime = 100
-        let initialTime = initialEntity.tickCount
+        let initialTime = 0
         const timeLogicFrequence = 20
         const distanceLogicFrequence = 2
         let timeLogicTickCount = 0
@@ -13,19 +13,20 @@ function KeraunoSoulDriver() {
             y: initialEntity.y,
             z: initialEntity.z
         }
+        let lastTickDist = 0
         const projectileId = 'eternal_starlight:shattered_blade'
         const chainDamage = 4
         const radius = 5
         const chain = 3
         server.scheduleRepeatingInTicks(1, callback => {
             timeLogicTickCount++
-            console.log(timeLogicTickCount);
+            // console.log(timeLogicTickCount);
             
             try {
-                if (timeLogicTickCount >= effectTime) {
+                if (timeLogicTickCount >= effectTime || initialEntity.isRemoved()) {
                     return callback.clear()
                 }
-                let currentTime = initialEntity.tickCount
+                let currentTime = timeLogicTickCount
                 let entityList = findValidEntities(initialEntity, radius, chain)
                 if (timeLogicTickCount === 1) {
                     console.log(`entities: ${entityList}`);
@@ -39,21 +40,24 @@ function KeraunoSoulDriver() {
                     Math.pow(currentPos.x - lastPos.x, 2) +
                     Math.pow(currentPos.y - lastPos.y, 2) +
                     Math.pow(currentPos.z - lastPos.z, 2)
-                )
+                ) + lastTickDist
                 source.tell(`Distance moved: ${distance}`)
                 if (distance >= distanceLogicFrequence) {
                     console.log('距离伤害逻辑')
                     lastPos = currentPos
+                    lastTickDist = 0
                     applyDamage(source, initialEntity, entityList, chainDamage)
     
-                    lastDamageTickCount = currentTime - initialTime
+                    lastDamageTickCount = timeLogicTickCount
                     return
                 }
+                console.log(currentTime - lastDamageTickCount);
+                
                 if (currentTime - lastDamageTickCount >= timeLogicFrequence) {
                     console.log('时间伤害逻辑')
                     applyDamage(source, initialEntity, entityList, chainDamage)
     
-                    lastDamageTickCount = currentTime
+                    lastDamageTickCount = timeLogicTickCount
                 }
             } catch (error) {
                 console.log(error)
@@ -77,16 +81,21 @@ function KeraunoSoulDriver() {
         ).filter(e => 
             e.id !== sourceEntity.id && 
             e.getEncodeId() !== "eternal_starlight:shattered_blade" && 
-            !e.isPlayer()
+            !e.isPlayer() &&
+            e.isLiving() || 
+            e.getEncodeId() === "dummmmmmy:target_dummy"
         )
 
-        console.log(`实体取值前`);
+        // console.log(`实体取值前`);
         // console.log(entities.slice(0, chain));
         if (entities.length === 0) return [];
         for (let i = entities.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [entities[i], entities[j]] = [entities[j], entities[i]];
         }
+
+        if (entities.length <= chain) return entities;
+        
         let result = [];
         let count = 0;
         for (let entity of entities) {
@@ -94,14 +103,13 @@ function KeraunoSoulDriver() {
             result.push(entity);
             count++;
         }
-        if (entities.length <= chain) return entities;
 
         return result
     }
 
     function applyDamage(source, initialEntity, entityList, chainDamage) {
         source.tell('施加伤害')
-        console.log(`${source},${initialEntity}`)
+        // console.log(`${source},${initialEntity}`)
 
         initialEntity.invulnerableTime = 0
         initialEntity.attack(source, chainDamage)
@@ -114,7 +122,7 @@ function KeraunoSoulDriver() {
             entityList[i].invulnerableTime = 0
             entityList[i].attack(source, chainDamage)
             entityList[i].invulnerableTime = 0
-            source.tell('产生特效')
+            // source.tell('产生特效')
             if (i === 0) {
                 chainVisual(initialEntity, entityList[i])
             } else {
@@ -125,9 +133,9 @@ function KeraunoSoulDriver() {
     }
 
     function chainVisual(startEntity, endEntity) {
-        const startPos = RegistryTools.clonePosition(startEntity)
-        const endPos = RegistryTools.clonePosition(endEntity)
-        console.log(`${startPos}, ${endPos}`)
+        const startPos = MyTools.clonePosition(startEntity)
+        const endPos = MyTools.clonePosition(endEntity)
+        // console.log(`${startPos}, ${endPos}`)
         const steps = 10; // 粒子段数
         const dx = (endPos.x - startPos.x) / steps;
         const dy = (endPos.y - startPos.y) / steps;
@@ -135,7 +143,7 @@ function KeraunoSoulDriver() {
 
         // 在两点之间生成闪电粒子
         for (let i = 0; i <= steps; i++) {
-            console.log(`产生粒子`);
+            // console.log(`产生粒子`);
             
             let x = startPos.x + dx * i;
             let y = startPos.y + 1 + dy * i;
@@ -173,8 +181,6 @@ function KeraunoSoulDriver() {
         TypedArrayList.empty(needClass.AttributeModifier), 
         (source, initialTarget) => {  // triggerFunc
             console.log('enter1')
-            // console.log(projectile);
-            
             try {
                 startChainReaction(source, initialTarget)
             } catch (error) {

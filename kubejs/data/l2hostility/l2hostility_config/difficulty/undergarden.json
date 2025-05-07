@@ -1,0 +1,16 @@
+{
+  "biomeMap": {},
+  "levelDefaultTraits": {},
+  "levelMap": {
+    "undergarden:undergarden": {
+      "apply_chance": 1.0,
+      "base": 80,
+      "min": 0,
+      "scale": 1.2,
+      "suppression": 0.0,
+      "trait_chance": 1.0,
+      "variation": 16.0
+    }
+  },
+  "structureDefaultTraits": {}
+}
