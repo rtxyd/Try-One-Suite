@@ -1,0 +1,27 @@
+let breaker_supermassive_data = function supermassive() {
+    return {
+        "type": "apotheosis:radial",
+        "definition": {
+            "affix_type": "ability",
+            "exclusive_set": [
+                "apotheosis:breaker/effect/radial"
+            ],
+            "weights": {
+                "pinnacle": {
+                    "quality": 5.0,
+                    "weight": 20
+                }
+            }
+        },
+        "values": {
+            "apotheosis:mythic": [
+                {
+                    "x": 7,
+                    "xOff": 0,
+                    "y": 7,
+                    "yOff": 0
+                }
+            ]
+        }
+    }
+}

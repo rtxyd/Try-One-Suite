@@ -1,0 +1,2 @@
+通过  Player => PlayerWrapper 映射缓存玩家数据
+包括 UUID，fullArmors，specialEquipments 等

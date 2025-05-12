@@ -29,13 +29,11 @@ global.needClass = {
     // ArrayList: Java.loadClass('Java.lang.ArrayList')
 }
 global.$KEY = 'yd_a'
-global.Rantern = {
-    loc: function(path) {
+global.crLoc = function(path) {
         return needClass.ResourceLocation.fromNamespaceAndPath($KEY, path);
-    }
 }
 
-const Rantern = global.Rantern
+const crLoc = global.crLoc
 const $KEY = global.$KEY
 
 const needClass = global.needClass
@@ -60,11 +58,10 @@ const CuriosTags = Java.loadClass('top.theillusivec4.curios.api.CuriosTags')
 const TagKey = Java.loadClass('net.minecraft.tags.TagKey')
 const HolderSet = Java.loadClass('net.minecraft.core.HolderSet')
 const KubeJS = Java.loadClass('dev.latvian.mods.kubejs.KubeJS')
-// const DataExport = Java.loadClass('dev.latvian.mods.kubejs.server.DataExport')
+const KubeJSPaths = Java.loadClass('dev.latvian.mods.kubejs.KubeJSPaths')
 
 const MinigunItem = Java.loadClass('me.desht.pneumaticcraft.common.item.minigun.MinigunItem')
 const Registries = Java.loadClass('net.minecraft.core.registries.Registries')
 const Predicates = Java.loadClass('com.google.common.base.Predicates')
 
 const $R = apotheosisClass.DeferredHelper.create($KEY)
-

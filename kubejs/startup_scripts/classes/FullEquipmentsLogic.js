@@ -4,7 +4,8 @@ function FullEquipmentsLogic() {
     if (fullArmorsArray) {
         this.fullArmorsArray = fullArmorsArray
     }
-    this.handItemsSurfix = handItemsSurfix
+    this.mainHandItemsSurfix = 'mainHandItemsSurfix'
+    this.offHandItemSurfix = 'offHandItemSurfix'
     this.predicateEnemyState = {}
     this.predicateEnvironment = {}
     this.predicateSelfState = {}

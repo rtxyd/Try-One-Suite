@@ -1,0 +1,27 @@
+{
+	"type": "apotheosis:enlightened",
+	"definition": {
+		"affix_type": "ability",
+		"exclusive_set": [],
+		"weights": {
+			"weight": 25
+		}
+	},
+	"values": {
+		"apotheosis:rare": {
+			"min": 12,
+			"max": 8,
+			"step": -1
+		},
+		"apotheosis:epic": {
+			"min": 10,
+			"max": 5,
+			"step": -1
+		},
+		"apotheosis:mythic": {
+			"min": 5,
+			"max": 0,
+			"step": -1
+		}
+	}
+}

@@ -1,6 +1,6 @@
 {
     "name": "神化怪物",
-    "description": "神化引入了多种子类型的怪物，这些怪物会出现在你的世界中。$(p)这一节会告诉你有哪些种类的怪物，以及你可以在哪找到他们。",
+    "description": "神化引入了各种怪物的亚型，它们将出现在你的世界中。$(p)本节将讨论怪物的种类以及在哪里可以找到它们。",
     "icon": "apotheosis:boss_summoner",
 	"flag": "apotheosis:adventure",
 	"parent": "apotheosis:adventure/adventure"

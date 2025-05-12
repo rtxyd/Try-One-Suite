@@ -31,6 +31,10 @@ global.MyTools = {
         }
     },
 
+    clearOut: function(object) {
+        object = null
+    },
+
     /**
      * 检查ID是否存在于注册表中
      * @param {string} id - 注册表ID

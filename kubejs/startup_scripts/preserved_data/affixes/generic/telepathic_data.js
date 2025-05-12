@@ -1,0 +1,17 @@
+let generic_telepathic_data = function telepathic() {
+    return {
+        "type": "apotheosis:telepathic",
+        "definition": {
+            "affix_type": "basic_effect",
+            "exclusive_set": [],
+            "weights": {
+                "weight": 25
+            }
+        },
+        "rarities": [
+            "apotheosis:rare",
+            "apotheosis:epic",
+            "apotheosis:mythic"
+        ]
+    }
+}

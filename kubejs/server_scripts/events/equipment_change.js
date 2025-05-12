@@ -15,6 +15,7 @@ NativeEvents.onEvent("net.neoforged.neoforge.event.entity.living.LivingEquipment
 
     const slot = e.getSlot()
     const pUUID = entity.getUuid()
+    const stringUUID = pUUID.toString()
     const pWarpper = allPlayerWrapper.get(pUUID)
     const aValue = pWarpper.data.fullArmors.value
     if (!aValue && aValue !== -1 && slot.getType() === needClass.EquipmentSlot$Type.HAND) {
