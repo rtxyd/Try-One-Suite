@@ -5,5 +5,5 @@ StartupEvents.init(event => {
 
 StartupEvents.postInit(event => {
     // GenerateDataFiles()
-    distributeData()
+    distributeDataOriginal()
 })

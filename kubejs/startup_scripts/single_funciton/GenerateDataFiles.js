@@ -43,128 +43,89 @@ function GenerateDataFiles() {
 
 function collectData() {
     let collector = {}
-    let arr = collector['armor'] = []
-    arr.push(armor_adamantine_data)
-    arr.push(armor_aquatic_data)
-    arr.push(armor_blessed_data)
-    arr.push(armor_elastic_data)
-    arr.push(armor_fireproof_data)
-    arr.push(armor_fortunate_data)
-    arr.push(armor_gravitational_data)
-    arr.push(armor_ironforged_data)
-    arr.push(armor_oxygenated_data)
-    arr.push(armor_spiritual_data)
-    arr.push(armor_stalwart_data)
-    arr.push(armor_unbound_data)
-    arr.push(armor_windswept_data)
-    arr.push(armor_winged_data)
-    arr.push(armor_blast_forged_data)
-    arr.push(armor_blockading_data)
-    arr.push(armor_deflective_data)
-    arr.push(armor_feathery_data)
-    arr.push(armor_grounded_data)
-    arr.push(armor_runed_data)
-    arr.push(armor_blinding_data)
-    arr.push(armor_bolstering_data)
-    arr.push(armor_bursting_data)
-    arr.push(armor_nimble_data)
-    arr.push(armor_revitalizing_data)
-    arr = collector['breaker'] = []
-    arr.push(breaker_enlightened_data)
-    arr.push(breaker_sandforming_data)
-    arr.push(breaker_stoneforming_data)
-    arr.push(breaker_supermassive_data)
-    arr.push(breaker_destructive_data)
-    arr.push(breaker_experienced_data)
-    arr.push(breaker_lengthy_data)
-    arr.push(breaker_submerged_data)
-    arr.push(breaker_omnetic_data)
-    arr.push(breaker_radial_data)
-    arr.push(breaker_prosperous_data)
-    arr.push(breaker_spelunkers_data)
-    arr.push(breaker_swift_data)
-    arr = collector['generic'] = []
-    arr.push(generic_lucky_data)
-    arr.push(generic_telepathic_data)
-    arr = collector['melee'] = []
-    arr.push(melee_berserking_data)
-    arr.push(melee_forceful_data)
-    arr.push(melee_giant_slaying_data)
-    arr.push(melee_glacial_data)
-    arr.push(melee_graceful_data)
-    arr.push(melee_infernal_data)
-    arr.push(melee_intricate_data)
-    arr.push(melee_lacerating_data)
-    arr.push(melee_lengthy_data)
-    arr.push(melee_murderous_data)
-    arr.push(melee_piercing_data)
-    arr.push(melee_vampiric_data)
-    arr.push(melee_violent_data)
-    arr.push(melee_cleaving_data)
-    arr.push(melee_executing_data)
-    arr.push(melee_festive_data)
-    arr.push(melee_bloodletting_data)
-    arr.push(melee_caustic_data)
-    arr.push(melee_elusive_data)
-    arr.push(melee_omniscient_data)
-    arr.push(melee_sophisticated_data)
-    arr.push(melee_weakening_data)
-    arr.push(melee_thunderstruck_data)
-    arr = collector['ranged'] = []
-    arr.push(ranged_agile_data)
-    arr.push(ranged_elven_data)
-    arr.push(ranged_streamlined_data)
-    arr.push(ranged_windswept_data)
-    arr.push(ranged_prosperous_data)
-    arr.push(ranged_magical_data)
-    arr.push(ranged_acidic_data)
-    arr.push(ranged_blighted_data)
-    arr.push(ranged_deathbound_data)
-    arr.push(ranged_ensnaring_data)
-    arr.push(ranged_fleeting_data)
-    arr.push(ranged_grievous_data)
-    arr.push(ranged_ivy_laced_data)
-    arr.push(ranged_shulkers_data)
-    arr.push(ranged_spectral_data)
-    arr = collector['shield'] = []
-    arr.push(shield_ironforged_data)
-    arr.push(shield_stalwart_data)
-    arr.push(shield_steel_touched_data)
-    arr.push(shield_catalyzing_data)
-    arr.push(shield_devilish_data)
-    arr.push(shield_galvanizing_data)
-    arr.push(shield_reinforcing_data)
-    arr.push(shield_venomous_data)
-    arr.push(shield_withering_data)
-    arr.push(shield_psychic_data)
-    arr.push(shield_retreating_data)
+    let path_stem = '"kubejs/config" + "/" + "apotheosis/affixes"'
+
+    let filesMap
+    filesMap = collector['armor'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/armor').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
+    filesMap = collector['breaker'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/breaker').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
+    filesMap = collector['generic'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/generic').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
+    filesMap = collector['melee'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/melee').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
+    filesMap = collector['ranged'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/ranged').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
+    filesMap = collector['shield'] = Utils.newMap()
+    readJsonFolderFromMod('data', 'apotheosis', 'affixes/shield').forEach(
+        (key, value) => filesMap.put(key.path, value)
+    )
 
     return collector
 }
 
-function distributeData() {
+function distributeDataOriginal() {
+    let config = JsonIO.read("kubejs/config/cache_cat.json")
+    if (config === 1) return
+    else JsonIO.write("kubejs/config/cache_cat.json", () => {config["generated"] = true; return config})
     let collector = collectData()
     let filePath = "kubejs/data" + "/" + "apotheosis/affixes"
-    for(let item of Object.keys(collector)) {
+    for (let item of Object.keys(collector)) {
         console.log(`${item} 已加载`)
         let filePath2 = filePath + `/${item}`
         KubeJSPaths.dir(filePath2)
-        let arr = collector[item]        
-        for(let innerItem of arr) {
+        let filesMap = collector[item]
+        filesMap.forEach((path, jsonObj) => {
+            let jsonObjCopy = JsonIO.parse(JsonIO.toPrettyString(jsonObj))
+            console.log("jsonObjCopy:", jsonObjCopy);
             for (let i = 0; i <= 5; i++) {
                 let filePath3
+                let fileName = getFileNameWithoutExtension(path)
                 if (i === 0) {
-                    filePath3 = filePath2 + `/${innerItem.name}.json`
+                    filePath3 = filePath2 + `/${fileName}.json`
                 } else {
-                    filePath3 = filePath2 + `/${innerItem.name}_t${i}.json`
+                    filePath3 = filePath2 + `/${fileName}_t${i}.json`
                 }
-                console.log(filePath3);
+                console.log(filePath3)
                 let cached = JsonIO.read(filePath3)
                 if (!cached) {
-                    cached = innerItem()
-                    JsonIO.write(filePath3, cached)
+                    let defType = jsonObjCopy.types
+                    if (defType) {
+                        let newCat = Utils.newList()
+                        defType.forEach(cat => {
+                            let element = cat.toString().split(":")
+                            let end = element[element.length - 1]
+                            newCat.add(`yd_a:${end}_t${i}`)
+                        })
+                        defType.addAll(newCat)
+                    } else {
+                        let categories = jsonObjCopy.categories
+                        if (!categories) {
+                            JsonIO.write(filePath3, jsonObjCopy)
+                            continue
+                        }
+                        let newCat = Utils.newList()
+                        categories.forEach(cat => {
+                            let element = cat.toString().split(":")
+                            let end = element[element.length - 1]
+                            newCat.add(`yd_a:${end}_t${i}`)
+                        })
+                        categories.addAll(newCat)
+                    }
+                    JsonIO.write(filePath3, jsonObjCopy)
                 }
             }
-        }
+        })
     }
 }
+

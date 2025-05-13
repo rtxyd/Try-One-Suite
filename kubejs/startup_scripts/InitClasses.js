@@ -36,7 +36,7 @@ global.crLoc = function(path) {
 const crLoc = global.crLoc
 const $KEY = global.$KEY
 
-const needClass = global.needClass
+
 global.apotheosisClass = {
     LootCategory: Java.loadClass('dev.shadowsoffire.apotheosis.loot.LootCategory'),
     EntitySlotGroup: Java.loadClass('dev.shadowsoffire.apothic_attributes.modifiers.EntitySlotGroup'),
@@ -53,12 +53,27 @@ global.apotheosisClass = {
 
     // ALObjects$EntityEquipmentSlots: Java.loadClass('dev.shadowsoffire.apothic_attributes.api.ALObjects$EntityEquipmentSlots'),
 }
-const apotheosisClass = global.apotheosisClass
+
+global.loadPackClass = {
+    ResourcePackLoader: Java.loadClass('net.neoforged.neoforge.resource.ResourcePackLoader'),
+    Collectors: Java.loadClass("java.util.stream.Collectors"),
+    ServerPacksSource: Java.loadClass("net.minecraft.server.packs.repository.ServerPacksSource"),
+    FallbackResourceManager: Java.loadClass("net.minecraft.server.packs.resources.FallbackResourceManager"),
+    PackSource: Java.loadClass('net.minecraft.server.packs.repository.PackSource'),
+    PackLocationInfo: Java.loadClass('net.minecraft.server.packs.PackLocationInfo'),
+    Optional: Java.loadClass('java.util.Optional'),
+    Component: Java.loadClass('net.minecraft.network.chat.Component'),
+}
+
 const CuriosTags = Java.loadClass('top.theillusivec4.curios.api.CuriosTags')
 const TagKey = Java.loadClass('net.minecraft.tags.TagKey')
 const HolderSet = Java.loadClass('net.minecraft.core.HolderSet')
 const KubeJS = Java.loadClass('dev.latvian.mods.kubejs.KubeJS')
 const KubeJSPaths = Java.loadClass('dev.latvian.mods.kubejs.KubeJSPaths')
+
+const apotheosisClass = global.apotheosisClass
+const needClass = global.needClass
+const loadPackClass = global.loadPackClass
 
 const MinigunItem = Java.loadClass('me.desht.pneumaticcraft.common.item.minigun.MinigunItem')
 const Registries = Java.loadClass('net.minecraft.core.registries.Registries')
