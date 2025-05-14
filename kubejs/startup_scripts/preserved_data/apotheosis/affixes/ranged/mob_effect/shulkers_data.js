@@ -1,0 +1,51 @@
+const ranged_shulkers_data = function shulkers() {
+        return {
+            "init": {
+                "type": "apotheosis:mob_effect",
+                "definition": {
+                    "affix_type": "basic_effect",
+                    "exclusive_set": [],
+                    "weights": {
+                        "quality": 0.1,
+                        "weight": 25
+                    }
+                },
+                "mob_effect": "minecraft:levitation",
+                "target": "arrow_target",
+                "types": [
+                    "apotheosis:bow"
+                ],
+                "values": {
+                    "apotheosis:epic": {
+                        "duration": {
+                            "min": 20.0,
+                            "max": 80.0,
+                            "step": 20.0
+                        },
+                        "amplifier": {
+                            "min": 0.0,
+                            "max": 1.0,
+                            "step": 0.25
+                        },
+                        "cooldown": 140
+                    },
+                    "apotheosis:mythic": {
+                        "duration": {
+                            "min": 20.0,
+                            "max": 100.0,
+                            "step": 20.0
+                        },
+                        "amplifier": {
+                            "min": 0.0,
+                            "max": 2.0,
+                            "step": 0.25
+                        },
+                        "cooldown": 140
+                    }
+                }
+            },
+            "equip_type": "ranged",
+            "affix_type": "mob_effect",
+            "name": "shulkers"
+        }
+    }

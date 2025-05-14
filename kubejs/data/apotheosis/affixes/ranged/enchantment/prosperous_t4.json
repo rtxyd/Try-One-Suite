@@ -1,0 +1,28 @@
+{
+	"type": "apotheosis:enchantment",
+	"categories": [
+		"apotheosis:bow",
+		"yd_a:bow_t4"
+	],
+	"definition": {
+		"affix_type": "ability",
+		"exclusive_set": [],
+		"weights": {
+			"quality": 0.1,
+			"weight": 25
+		}
+	},
+	"enchantment": "minecraft:looting",
+	"values": {
+		"apotheosis:epic": {
+			"min": 6,
+			"max": 8,
+			"step": 0.25
+		},
+		"apotheosis:mythic": {
+			"min": 8,
+			"max": 10,
+			"step": 0.25
+		}
+	}
+}

@@ -1,12 +1,17 @@
 {
 	"type": "apotheosis:stoneforming",
 	"candidates": "#apotheosis:sandforming_candidates",
+	"categories": [
+		"apotheosis:breaker",
+		"yd_a:breaker_t4"
+	],
 	"definition": {
 		"affix_type": "ability",
 		"exclusive_set": [
 			"apotheosis:breaker/ability/stoneforming"
 		],
 		"weights": {
+			"quality": 0.1,
 			"weight": 25
 		}
 	}

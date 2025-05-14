@@ -1,5 +1,9 @@
 {
 	"type": "apotheosis:radial",
+	"categories": [
+		"apotheosis:breaker",
+		"yd_a:breaker_t5"
+	],
 	"definition": {
 		"affix_type": "ability",
 		"exclusive_set": [
@@ -7,7 +11,7 @@
 		],
 		"weights": {
 			"pinnacle": {
-				"quality": 5,
+				"quality": 0.75,
 				"weight": 20
 			}
 		}

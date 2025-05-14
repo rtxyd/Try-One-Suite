@@ -1,0 +1,44 @@
+const shield_galvanizing_data = function galvanizing() {
+        return {
+            "init": {
+                "type": "apotheosis:mob_effect",
+                "definition": {
+                    "affix_type": "basic_effect",
+                    "exclusive_set": [
+                        "apotheosis:shield/mob_effect/reinforcing"
+                    ],
+                    "weights": {
+                        "pinnacle": {
+                            "quality": 0.75,
+                            "weight": 20
+                        }
+                    }
+                },
+                "mob_effect": "minecraft:resistance",
+                "stack_on_reapply": true,
+                "stacking_limit": 3,
+                "target": "block_self",
+                "types": [
+                    "apotheosis:shield"
+                ],
+                "values": {
+                    "apotheosis:mythic": {
+                        "duration": {
+                            "min": 100.0,
+                            "max": 160.0,
+                            "step": 20.0
+                        },
+                        "amplifier": {
+                            "min": 0.0,
+                            "max": 1.0,
+                            "step": 0.125
+                        },
+                        "cooldown": 80
+                    }
+                }
+            },
+            "equip_type": "shield",
+            "affix_type": "mob_effect",
+            "name": "galvanizing"
+        }
+    }

@@ -1,0 +1,39 @@
+const armor_steel_touched_data = function steel_touched() {
+        return {
+            "init": {
+                "type": "apotheosis:attribute",
+                "attribute": "minecraft:generic.armor_toughness",
+                "categories": [
+                    "apotheosis:helmet",
+                    "apotheosis:chestplate",
+                    "apotheosis:leggings",
+                    "apotheosis:boots"
+                ],
+                "definition": {
+                    "affix_type": "stat",
+                    "exclusive_set": [],
+                    "weights": {
+                        "quality": 0.1,
+                        "weight": 25
+                    }
+                },
+                "operation": "add_value",
+                "values": {
+                    "apotheosis:rare": 1.0,
+                    "apotheosis:epic": {
+                        "min": 1.5,
+                        "max": 3.0,
+                        "step": 0.25
+                    },
+                    "apotheosis:mythic": {
+                        "min": 2.0,
+                        "max": 6.0,
+                        "step": 0.25
+                    }
+                }
+            },
+            "equip_type": "armor",
+            "affix_type": "attribute",
+            "name": "steel_touched"
+        }
+    }

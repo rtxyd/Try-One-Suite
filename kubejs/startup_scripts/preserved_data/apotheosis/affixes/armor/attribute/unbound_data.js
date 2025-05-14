@@ -1,0 +1,30 @@
+const armor_unbound_data = function unbound() {
+        return {
+            "init": {
+                "type": "apotheosis:attribute",
+                "attribute": "neoforge:creative_flight",
+                "categories": [
+                    "apotheosis:chestplate"
+                ],
+                "definition": {
+                    "affix_type": "stat",
+                    "exclusive_set": [
+                        "apotheosis:armor/attribute/winged"
+                    ],
+                    "weights": {
+                        "pinnacle": {
+                            "quality": 0.2,
+                            "weight": 1
+                        }
+                    }
+                },
+                "operation": "add_value",
+                "values": {
+                    "apotheosis:mythic": 1.0
+                }
+            },
+            "equip_type": "armor",
+            "affix_type": "attribute",
+            "name": "unbound"
+        }
+    }

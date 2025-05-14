@@ -1,9 +1,16 @@
 {
 	"type": "apotheosis:thunderstruck",
+	"categories": [
+		"apotheosis:melee_weapon",
+		"apotheosis:trident",
+		"yd_a:melee_weapon_t4",
+		"yd_a:trident_t4"
+	],
 	"definition": {
 		"affix_type": "ability",
 		"exclusive_set": [],
 		"weights": {
+			"quality": 0.1,
 			"weight": 25
 		}
 	},

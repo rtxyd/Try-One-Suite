@@ -2,7 +2,8 @@
 // type: startup
 
 function GenerateDataFiles() {
-    const filePath = "kubejs/data" + "/" + "apotheosis/data_maps/item/loot_category_overrides.json"
+    const fileDir = "kubejs/data" + "/" + "apotheosis/data_maps/item"
+    const filePath = fileDir + "/loot_category_overrides.json"
     let data = JsonIO.read(filePath)
 
     const configFilePath = "kubejs/config" + "/" + "cache_cat.json"
@@ -35,7 +36,7 @@ function GenerateDataFiles() {
         if (data.values.hasOwnProperty(key)) return
         data.values[key] = catNone
     })
-    
+    KubeJSPaths.dir(fileDir)
     JsonIO.write(filePath, data)
     cachedLength.lastLength = Object.keys(data.values).length
     JsonIO.write(configFilePath, cachedLength)
@@ -145,25 +146,63 @@ function collectData() {
 function distributeData() {
     let collector = collectData()
     let filePath = "kubejs/data" + "/" + "apotheosis/affixes"
-    for(let item of Object.keys(collector)) {
+    for (let item of Object.keys(collector)) {
         console.log(`${item} 已加载`)
         let filePath2 = filePath + `/${item}`
-        KubeJSPaths.dir(filePath2)
-        let arr = collector[item]        
-        for(let innerItem of arr) {
+        let arr = collector[item]
+        for (let innerItem of arr) {
             for (let i = 0; i <= 5; i++) {
                 let filePath3
-                if (i === 0) {
-                    filePath3 = filePath2 + `/${innerItem.name}.json`
+                let filePath4
+                let fullObj = innerItem()
+                let jsonObj = fullObj.init
+                if (fullObj.affix_type === "ability") {
+                    KubeJSPaths.dir(filePath2)
+                    if (i === 0) {
+                        filePath4 = filePath2 + `/${innerItem.name}.json`
+                    } else {
+                        filePath4 = filePath2 + `/${innerItem.name}_t${i}.json`
+                    }
                 } else {
-                    filePath3 = filePath2 + `/${innerItem.name}_t${i}.json`
+                    filePath3 = filePath2 + '/' + fullObj.affix_type
+                    KubeJSPaths.dir(filePath3)
+                    if (i === 0) {
+                        filePath4 = filePath3 + `/${innerItem.name}.json`
+                    } else {
+                        filePath4 = filePath3 + `/${innerItem.name}_t${i}.json`
+                    }
                 }
-                console.log(filePath3);
-                let cached = JsonIO.read(filePath3)
-                if (!cached) {
-                    cached = innerItem()
-                    JsonIO.write(filePath3, cached)
+                console.log(filePath4)
+                // console.log(jsonObj)
+                let defType = jsonObj["types"]
+                // console.log(defType);
+                
+                if (defType) {
+                    let newCat = []
+                    defType.forEach(cat => {
+                        let element = cat.split(":")
+                        let end = element[element.length - 1]
+                        newCat.push(`yd_a:${end}_t${i}`)
+                    })
+                    Array.prototype.push.apply(defType, newCat)      
+                } else {
+                    let categories = jsonObj["categories"]
+                    // console.log(categories);
+                    
+                    if (!categories) {
+                        JsonIO.write(filePath4, jsonObj)
+                        continue
+                    }
+                    let newCat = []
+                    categories.forEach(cat => {
+                        let element = cat.toString().split(":")
+                        let end = element[element.length - 1]
+                        newCat.push(`yd_a:${end}_t${i}`)
+                    })
+
+                    Array.prototype.push.apply(categories, newCat)                        
                 }
+                JsonIO.write(filePath4, jsonObj)
             }
         }
     }

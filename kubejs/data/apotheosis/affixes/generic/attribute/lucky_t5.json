@@ -1,0 +1,57 @@
+{
+	"type": "apotheosis:attribute",
+	"attribute": "minecraft:generic.luck",
+	"categories": [
+		"apotheosis:bow",
+		"apotheosis:breaker",
+		"apotheosis:helmet",
+		"apotheosis:chestplate",
+		"apotheosis:leggings",
+		"apotheosis:boots",
+		"apotheosis:shield",
+		"apotheosis:trident",
+		"apotheosis:melee_weapon",
+		"apotheosis:shears",
+		"yd_a:bow_t5",
+		"yd_a:breaker_t5",
+		"yd_a:helmet_t5",
+		"yd_a:chestplate_t5",
+		"yd_a:leggings_t5",
+		"yd_a:boots_t5",
+		"yd_a:shield_t5",
+		"yd_a:trident_t5",
+		"yd_a:melee_weapon_t5",
+		"yd_a:shears_t5"
+	],
+	"definition": {
+		"affix_type": "stat",
+		"exclusive_set": [],
+		"weights": {
+			"quality": 0.1,
+			"weight": 25
+		}
+	},
+	"operation": "add_value",
+	"values": {
+		"apotheosis:uncommon": {
+			"min": 1,
+			"max": 1.5,
+			"step": 0.25
+		},
+		"apotheosis:rare": {
+			"min": 2,
+			"max": 3,
+			"step": 0.25
+		},
+		"apotheosis:epic": {
+			"min": 2.5,
+			"max": 4,
+			"step": 0.25
+		},
+		"apotheosis:mythic": {
+			"min": 3,
+			"max": 6,
+			"step": 0.25
+		}
+	}
+}

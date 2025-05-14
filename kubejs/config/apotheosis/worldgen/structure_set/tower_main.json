@@ -1,0 +1,12 @@
+{
+	"structures": [{
+		"structure": "apotheosis:tower_main",
+		"weight": 1
+	}],
+	"placement": {
+		"type": "minecraft:random_spread",
+		"spacing": 26,
+		"separation": 15,
+		"salt": 12121818
+	}
+}

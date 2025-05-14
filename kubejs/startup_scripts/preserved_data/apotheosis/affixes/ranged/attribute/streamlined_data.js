@@ -1,0 +1,46 @@
+const ranged_streamlined_data = function streamlined() {
+        return {
+            "init": {
+                "type": "apotheosis:attribute",
+                "attribute": "apothic_attributes:arrow_velocity",
+                "categories": [
+                    "apotheosis:bow",
+                    "apotheosis:trident"
+                ],
+                "definition": {
+                    "affix_type": "stat",
+                    "exclusive_set": [],
+                    "weights": {
+                        "quality": 0.1,
+                        "weight": 25
+                    }
+                },
+                "operation": "add_multiplied_total",
+                "values": {
+                    "apotheosis:common": {
+                        "min": 0.15,
+                        "max": 0.2
+                    },
+                    "apotheosis:uncommon": {
+                        "min": 0.15,
+                        "max": 0.2
+                    },
+                    "apotheosis:rare": {
+                        "min": 0.15,
+                        "max": 0.25
+                    },
+                    "apotheosis:epic": {
+                        "min": 0.15,
+                        "max": 0.3
+                    },
+                    "apotheosis:mythic": {
+                        "min": 0.15,
+                        "max": 0.35
+                    }
+                }
+            },
+            "equip_type": "ranged",
+            "affix_type": "attribute",
+            "name": "streamlined"
+        }
+    }
