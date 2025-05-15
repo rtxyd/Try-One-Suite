@@ -1,0 +1,16 @@
+{
+  "biomeMap": {},
+  "levelDefaultTraits": {},
+  "levelMap": {
+    "deeperdarker:otherside": {
+      "apply_chance": 1.0,
+      "base": 50,
+      "min": 0,
+      "scale": 1.2,
+      "suppression": 0.0,
+      "trait_chance": 1.0,
+      "variation": 16.0
+    }
+  },
+  "structureDefaultTraits": {}
+}

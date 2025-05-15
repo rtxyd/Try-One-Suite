@@ -1,0 +1,61 @@
+ {
+  "list": [
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 200,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "eternal_starlight:the_gatekeeper",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    },
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 150,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "eternal_starlight:starlight_golem",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    },
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 150,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "eternal_starlight:lunar_monstrosity",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    }
+  ]
+}

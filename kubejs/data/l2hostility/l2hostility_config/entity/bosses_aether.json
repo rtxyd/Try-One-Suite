@@ -1,0 +1,61 @@
+ {
+  "list": [
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 100,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "aether:slider",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    },
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 100,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "aether:valkyrie_queen",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    },
+    {
+      "blacklist": [],
+      "difficulty": {
+        "apply_chance": 1.0,
+        "base": 50,
+        "min": 100,
+        "scale": 0.0,
+        "suppression": 0.0,
+        "trait_chance": 1.0,
+        "variation": 1.0
+      },
+      "entities": "aether:sun_spirit",
+      "items": [],
+      "maxLevel": 0,
+      "maxTraitCount": -1,
+      "minSpawnLevel": 0,
+      "specialConditions": [],
+      "traits": []
+    }
+  ]
+}
