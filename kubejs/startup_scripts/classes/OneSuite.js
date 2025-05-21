@@ -52,15 +52,57 @@ const OneSuite = (function() {
         console.log(`当前suite：${Object.entries(this)}`);
         this.suiteId = SuitesManager.INSTANCE.genSuiteIdToManager(this)
     }
-    OneSuite.getById = function(id) {
-        return SuitesManager.INSTANCE.getById(id)
-    }
+    OneSuite.prototype = Object.create(FullyEquippedLogic.prototype)
+    OneSuite.prototype.constructor = OneSuite
     function countValidEntries(object) {
         let count = 0
         Object.keys(object).forEach((k) => {
             if (object[k]) count++
         })
         return count
+    }
+    OneSuite.prototype.makeRepeatingChecker = function(suiteFlagObj, entity, pWarpper, flag1, flag2) {
+        let fullActiveSuites = pWarpper.getFullActiveSuites()
+        let activeSuites = pWarpper.getActiveSuites()
+        if (!suiteFlagObj.hasCallback && (flag1 || flag2)) {
+            console.log(flag1, flag2);
+            
+            entity.getServer().scheduleRepeatingInTicks(100, callback => {
+                console.log("进入自循环检测阶段")
+                let suiteId = this.suiteId
+                flag1 = activeSuites.has(suiteId)
+                flag2 = fullActiveSuites.has(suiteId)
+                console.log(flag1, flag2);
+                if (entity.isRemoved() || !(flag1 || flag2)) {
+                    suiteFlagObj.hasCallback = false
+                    if (suiteFlagObj.suiteFlag === 0) {
+                        delete objPredicates[suiteId]
+                    }
+                    return callback.clear()
+                }
+                console.log(`执行到此处了 179`);
+                if (flag2) {
+                    this.bonusModifiers.forEach((modifierWrapper) => {
+                        modifierWrapper.addModifiersWithCheck(entity)
+                    })
+                } else {
+                    this.bonusModifiers.forEach((modifierWrapper) => {
+                        modifierWrapper.eraseModifiersWithCheck(entity)
+                    })
+                }
+                if (flag1) {
+                    console.log(`执行到此处了 209`);
+                    this.straightModifiers.forEach((modifierWrapper) => {
+                        modifierWrapper.addModifiersWithCheck(entity)
+                    })
+                } else {
+                    this.straightModifiers.forEach((modifierWrapper) => {
+                        modifierWrapper.eraseModifiersWithCheck(entity)
+                    })
+                }
+            })
+            suiteFlagObj.hasCallback = true
+        }
     }
     OneSuite.prototype.establishedCheckHandItem = function(itemHolder, slot, fullyEquippedLogic, suiteFlagObj) {
         if(this.isMainhandEstablished && slot === needClass.EquipmentSlot.MAINHAND) {
@@ -80,6 +122,9 @@ const OneSuite = (function() {
                 suiteFlagObj.equippedFlag |= 33;
             }
         }
+    }
+    OneSuite.getById = function(id) {
+        return SuitesManager.INSTANCE.getById(id)
     }
     OneSuite.updateItem = function(itemHolder, slot, fullyEquippedLogic, suiteFlagObj, isReplaced) {
         let slotId = slot.getFilterFlag()
@@ -135,8 +180,5 @@ const OneSuite = (function() {
     })()
     return OneSuite
 })()
-
-OneSuite.prototype = Object.create(FullyEquippedLogic.prototype)
-OneSuite.prototype.constructor = OneSuite
 
 global.OneSuite = OneSuite
