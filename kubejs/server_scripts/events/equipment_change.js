@@ -19,12 +19,9 @@ NativeEvents.onEvent("net.neoforged.neoforge.event.entity.living.LivingEquipment
     const fromHolder = e.getFrom().getItemHolder()
     console.log(`${toHolder}`);
     console.log(`${fromHolder}`);
-    
 
     if (toHolder.equals(fromHolder)) return
 
-    // console.log(`${toSuites}`);
-    // if (!toSuites) return
     const slot = e.getSlot()
     const slotId = slot.getFilterFlag()
     const pUUID = entity.getUuid()
@@ -35,7 +32,6 @@ NativeEvents.onEvent("net.neoforged.neoforge.event.entity.living.LivingEquipment
     console.log(`${objPredicates}`);
     const fromItemWrapper = ItemWrapper.getByHolder(fromHolder)
     const toItemWrapper = ItemWrapper.getByHolder(toHolder)
-    // if (!toItemWrapper) return
     console.log(`${toItemWrapper}`);
     console.log(`${fromItemWrapper}`);
     let fullyEquippedLogic = pWarpper.getFullyEquippedLogic()
@@ -47,8 +43,6 @@ NativeEvents.onEvent("net.neoforged.neoforge.event.entity.living.LivingEquipment
         let fromSuites = fromItemWrapper.suites
         if (fromSuites) {
             fromSuites.forEach(suite => {
-                // let slotFlag = suite.checkItem(fromHolder)
-                // let objPredicates = pWarpper.getSuitesPredicates()
                 let suiteFlagObj = objPredicates[suite.suiteId]
                 OneSuite.updateItem(fromHolder, slot, fullyEquippedLogic, suiteFlagObj, true)
                 if (suiteFlagObj.suiteFlag !== suite.fullActiveCondition) {
@@ -104,47 +98,4 @@ NativeEvents.onEvent("net.neoforged.neoforge.event.entity.living.LivingEquipment
             })
         }
     }
-
-    // let fullActiveSuites = pWarpper.getFullActiveSuites()
-    // let activeSuites = pWarpper.getActiveSuites()
-    // if (slot.getType() === needClass.EquipmentSlot$Type.HAND) {
-    //     console.log(`进入hand`);
-    //     // bonus, transientModifiers
-    //     // if (activeSuites.equals(fullActiveSuites)) return
-
-    //     // Object.entries(objPredicates).forEach(([suiteId, suiteFlagObj]) => {
-    //     //     let suite = OneSuite.getManager().getById(suiteId)
-    //     //     if (suite) {
-    //     //         if(!suite.isEitherHnadEstablished)  suite.predicateHandItems.instance(toHolder, slot, fullyEquippedLogic, suiteFlagObj)
-    //     //         else suite.establishedCheckHandItem(toHolder, slot, fullyEquippedLogic, suiteFlagObj)
-    //     //     }
-    //     // })
-    //     return
-    // }
-
-
-    // Object.keys(objPredicates).forEach((suiteId) => {
-    //     console.log(`当前suiteID：${suiteId}`);
-    //     let suite = OneSuite.getById(suiteId)
-    //     // console.log(Object.entries(activeSuites));
-    //     // console.log(Object.entries(fullActiveSuites));
-    //     console.log(`当前suite：${Object.entries(suite)}`);
-    //     if (slot.getType() === needClass.EquipmentSlot$Type.HAND && suite.predicateHandItems !== jsPredicates.alwaysFalse) {
-
-    //     }
-    //     if (flag2) {
-
-    //     } else {
-
-    //     }
-    //     if (flag1) {
-
-    //     } else {
-
-    //     }
-    //     let suiteFlagObj = objPredicates[suiteId]
-    //     console.log(`当前suiteFlagObj：${Object.entries(suiteFlagObj)}`);
-    //     console.log(flag1, flag2);
-
-    // })
 })
