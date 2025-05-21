@@ -1,1 +1,1 @@
-A try of 0 -- 1
+a KubeJS drived script, armors' OneSuite triggers some effects.
