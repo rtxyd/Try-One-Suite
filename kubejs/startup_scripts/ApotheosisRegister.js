@@ -30,7 +30,7 @@ ApotheosisRegister.registSlotGroup = function(path, slots) {
     return $R['custom(java.lang.String,net.minecraft.resources.ResourceKey,java.lang.Object)'](
         path, 
         apotheosisClass.ALObjects$BuiltInRegs.ENTITY_SLOT_GROUP.key(), 
-        new apotheosisClass.EntitySlotGroup(crLoc(path), HolderSet['direct(net.minecraft.core.Holder[])'](slots))
+        new apotheosisClass.EntitySlotGroup(crLoc($KEY, path), HolderSet['direct(net.minecraft.core.Holder[])'](slots))
     );
 }
 

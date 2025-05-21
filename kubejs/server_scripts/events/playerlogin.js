@@ -17,3 +17,7 @@ PlayerEvents.loggedIn(e => {
         player.tell(message)
     })
 })
+PlayerEvents.loggedOut(e => {
+    const player = e.player
+    PlayerWrapper.removePlayerWrapper(player.getUuid())
+})

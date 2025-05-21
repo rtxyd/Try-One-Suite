@@ -19,6 +19,7 @@ global.needClass = {
     AttributeModifier: Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier'),
     MobEffectInstance: Java.loadClass('net.minecraft.world.effect.MobEffectInstance'),
     MobEffects: Java.loadClass('net.minecraft.world.effect.MobEffects'),
+    MobEffect: Java.loadClass('net.minecraft.world.effect.MobEffect'),
     EquipmentSlot$Type: Java.loadClass('net.minecraft.world.entity.EquipmentSlot$Type'),
     JavaString: Java.loadClass('java.lang.String'),
     HashMap: Java.loadClass('java.util.HashMap'),
@@ -29,11 +30,19 @@ global.needClass = {
     // ArrayList: Java.loadClass('Java.lang.ArrayList')
 }
 global.$KEY = 'yd_a'
-global.crLoc = function(path) {
-        return needClass.ResourceLocation.fromNamespaceAndPath($KEY, path);
+global.crLoc = function(namespace, path) {
+        return needClass.ResourceLocation.fromNamespaceAndPath(namespace, path);
+}
+global.prLoc = function(resourceLocation) {
+    return needClass.ResourceLocation.tryParse(resourceLocation)
+}
+global.jsPredicates = {
+    alwaysFalse: () => false
 }
 
 const crLoc = global.crLoc
+const prLoc = global.prLoc
+const jsPredicates = global.jsPredicates
 const $KEY = global.$KEY
 
 const needClass = global.needClass
