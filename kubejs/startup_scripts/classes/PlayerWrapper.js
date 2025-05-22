@@ -67,7 +67,5 @@ const PlayerWrapper = (function () {
     }
     return PlayerWrapper
 })()
-// function getRow() {
-//     return parseInt(new Error().stack.split(':')[7]);
-// }
+
 global.PlayerWrapper = PlayerWrapper

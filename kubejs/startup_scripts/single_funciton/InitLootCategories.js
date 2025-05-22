@@ -1,7 +1,7 @@
 // priority: 99
 // type: startup
 
-function InitLootCategories() {
+const InitLootCategories = function() {
     let RING = (function() {
         let slot = 'ring'
         let path = slot
@@ -35,4 +35,6 @@ function InitLootCategories() {
         let group = apotheosisClass.ALObjects$EquipmentSlotGroups.HEAD
         let category = ApotheosisRegister.registerLootCategory(path ,Predicates.alwaysFalse(), group)
     })()
+    
+    InitLootCategories = null
 }

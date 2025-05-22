@@ -10,7 +10,7 @@ global.needClass = {
     TickDuration: Java.loadClass('dev.latvian.mods.kubejs.util.TickDuration'),
     DataMapProvider: Java.loadClass('net.neoforged.neoforge.common.data.DataMapProvider'),
     //special
-    Parkourability: Java.loadClass('com.alrex.parcool.common.action.Parkourability'),
+    Parkourability: Java.loadClass('com.alrex.parcool.common.attachment.common.Parkourability'),
     Dodge: Java.loadClass('com.alrex.parcool.common.action.impl.Dodge'),
     ShatteredBlade: Java.loadClass('cn.leolezury.eternalstarlight.common.entity.projectile.ShatteredBlade'),
     ESEntities: Java.loadClass('cn.leolezury.eternalstarlight.common.registry.ESEntities'),

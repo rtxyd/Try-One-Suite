@@ -45,6 +45,9 @@ const FullyEquippedLogic = (function() {
         PredicateType.ENVIRONMENT = new PredicateType("environment", 2)
         PredicateType.SELF_STATE = new PredicateType("self_state", 4)
         PredicateType.HAND_ITEMS = new PredicateType("hand_items", 8)
+        PredicateType.ITEM_SWITCH = new PredicateType("item_switch", 32)
+        PredicateType.ON_HIT = new PredicateType("on_hit", 64)
+        PredicateType.ITEM_SWITCH = new PredicateType("item_switch", 128)
 
         return PredicateType
     })()
