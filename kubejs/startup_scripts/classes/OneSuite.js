@@ -1,11 +1,9 @@
 const OneSuite = (function() {
-    function OneSuite(full_of_string, predicateEnemyState, predicateEnvironment, predicateSelfState, predicateHandItems, straightModifiers, modifiersByPredicates, bonusModifiers, specialEffectsByPredicates, activeCondition, fullActiveCondition) {
+    function OneSuite(nameId, full_of_string, predicateEnemyState, predicateEnvironment, predicateSelfState, predicateHandItems, straightModifiers, modifiersByPredicates, bonusModifiers, specialEffectsByPredicates, activeCondition, fullActiveCondition) {
+        this.nameId = nameId
+        SuitesManager.INSTANCE.addSuiteNameToManager(this)
         FullyEquippedLogic.call(this, predicateEnemyState, predicateEnvironment, predicateSelfState, predicateHandItems, straightModifiers, modifiersByPredicates, bonusModifiers, specialEffectsByPredicates)
         this.fullOfString = full_of_string
-        // Object.entries(full_of_string).forEach(([key, value]) => {
-        //     if (value === null) return
-        //     ItemWrapper.tryCreateByResourceLocation(value, this)
-        // })
         let full_slot_holder = {}
         Object.entries(full_of_string).forEach(([key, value], index) => {
                 let slotItem = full_of_string[key]
@@ -54,13 +52,6 @@ const OneSuite = (function() {
     }
     OneSuite.prototype = Object.create(FullyEquippedLogic.prototype)
     OneSuite.prototype.constructor = OneSuite
-    function countValidEntries(object) {
-        let count = 0
-        Object.keys(object).forEach((k) => {
-            if (object[k]) count++
-        })
-        return count
-    }
     OneSuite.prototype.makeRepeatingChecker = function(suiteFlagObj, entity, pWarpper, flag1, flag2) {
         let fullActiveSuites = pWarpper.getFullActiveSuites()
         let activeSuites = pWarpper.getActiveSuites()
@@ -168,13 +159,34 @@ const OneSuite = (function() {
         1: 2,
         0: 1
     }
+    function countValidEntries(object) {
+        let count = 0
+        Object.keys(object).forEach((k) => {
+            if (object[k]) count++
+        })
+        return count
+    }
     const SuitesManager = (function() {
         const SuitesManager = {}
-        const inner_map = {}
+        const inner_map_id = {}
+        const inner_map_name = {}
         let currentSuiteId = -1
         SuitesManager.INSTANCE = {
-            genSuiteIdToManager: function(suite) {currentSuiteId += 1; inner_map[currentSuiteId] = suite; console.log(`当前对象：${inner_map[currentSuiteId]}`);  return currentSuiteId},
-            getById: (id) => inner_map[id]
+            genSuiteIdToManager: function(suite) {
+                currentSuiteId += 1;
+                inner_map_id[currentSuiteId] = suite;
+                console.log(`当前对象：${inner_map_id[currentSuiteId]}`);
+                return currentSuiteId
+            },
+            addSuiteNameToManager: function(suite) {
+                if (Object.hasOwn(suite.nameId)) {
+                    throw new Error(`Invalid suite nameId ${nameId}`);
+                }
+                else inner_map_name[suite.nameId] = suite
+                console.log(`当前对象：${suite.nameId}、${suite}`);
+            },
+            getById: (id) => inner_map_id[id],
+            getByName: (name) => inner_map_name[name]
         }
         return Object.freeze(SuitesManager)
     })()

@@ -10,9 +10,10 @@ const PlayerWrapper = (function () {
                 fullActiveSuites: new Matrix2BitTag(100),
                 activeSuites: new Matrix2BitTag(100),
                 availableItemsTags: new Matrix2BitTag(1000),
-                callback: false,
-                attributeHolder: new Matrix2BitTag(100)
-            }
+                attributeHolder: new Matrix2BitTag(100),
+                specialEffectsFuncs: {}
+            },
+            firedEventsInTick: 0
         }
         try {
           throw new Error(`准备添加玩家${this._uuid}`)

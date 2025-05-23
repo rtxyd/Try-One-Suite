@@ -1,4 +1,5 @@
 const minecraft__diamond = function() {
+    let nameId = "minecraft:diamond"
     let full_of_string = {
         "offhand": null,
         "head": "minecraft:diamond_helmet",
@@ -38,8 +39,8 @@ const minecraft__diamond = function() {
     let specialEffectsByPredicates = []
     let activeCondition = OneSuite.mergeSlots(ArmorSlotType.HEAD, ArmorSlotType.CHEST, ArmorSlotType.LEGS, ArmorSlotType.FEETS)
     let fullActiveCondition = OneSuite.mergeSlots(ArmorSlotType.HEAD, ArmorSlotType.CHEST, ArmorSlotType.LEGS, ArmorSlotType.FEETS, ArmorSlotType.MAINHAND)
-    minecraft__diamond = new OneSuite(full_of_string, predicateEnemyState, predicateEnvironment, predicateSelfState, predicateHandItems, straightModifiers, modifiersByPredicates, bonusModifiers, specialEffectsByPredicates, activeCondition, fullActiveCondition)
-    return minecraft__diamond
+    minecraft__diamond = null
+    return new OneSuite(nameId, full_of_string, predicateEnemyState, predicateEnvironment, predicateSelfState, predicateHandItems, straightModifiers, modifiersByPredicates, bonusModifiers, specialEffectsByPredicates, activeCondition, fullActiveCondition)
 }
 
 PostInitObjs.addSuiteRegister(minecraft__diamond)
